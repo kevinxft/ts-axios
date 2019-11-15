@@ -1,13 +1,13 @@
 import { isPlainObject } from './util'
 
-function normalizeHeaderName(headers: any, normalizeName: string): void {
+function normalizeHeaderName(headers: any, normalizedName: string): void {
   if (!headers) {
     return
   }
 
   Object.keys(headers).forEach(name => {
-    if (name != normalizeName && name.toUpperCase() === normalizeName.toUpperCase()) {
-      headers[normalizeName] = headers[name]
+    if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
+      headers[normalizedName] = headers[name]
       delete headers[name]
     }
   })

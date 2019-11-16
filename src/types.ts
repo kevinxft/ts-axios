@@ -14,7 +14,7 @@ export type Method =
   | 'patch'
   | 'PATCH'
 
-export type XMLHttpRequestResponseType  = "" | "arraybuffer" | "blob" | "document" | "json" | "text"
+export type XMLHttpRequestResponseType = '' | 'arraybuffer' | 'blob' | 'document' | 'json' | 'text'
 
 export interface AxiosRequestConfig {
   url: string
@@ -22,6 +22,7 @@ export interface AxiosRequestConfig {
   data?: any
   headers?: any
   params?: any
+  timeout?: number
   responseType?: XMLHttpRequestResponseType
 }
 export interface AxiosResponse {
@@ -31,6 +32,14 @@ export interface AxiosResponse {
   headers: any
   config: AxiosRequestConfig
   request: any
+}
+
+export interface AxiosError extends Error {
+  config: AxiosRequestConfig
+  code?: string
+  request?: any
+  response?: AxiosResponse
+  isAxiosError: boolean
 }
 
 export interface AxiosPromise extends Promise<AxiosResponse> {}
